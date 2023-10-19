@@ -1,0 +1,15 @@
+%{
+#include <stdio.h>
+%}
+%%
+int|char|float|double|void  {printf("Data Type: %s\n", yytext);}
+int main {printf("Function: %s\n", yytext);}
+[a-zA-Z_][a-zA-Z0-9_]* {printf("Identifier: %s\n", yytext);}
+[0-9]+ {printf("Constant: %s\n", yytext);}
+=|==|!=|<|>|<=|>=|+|-|*|/ {printf("Operator: %s\n", yytext);}
+if|else|while|for {printf("Keyword: %s\n", yytext);}
+%%
+int main() {
+    yylex();
+    return 0;
+}
