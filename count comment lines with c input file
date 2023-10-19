@@ -1,0 +1,30 @@
+%{
+int com = 0;
+%}
+%%
+"/*"[^\n]+"*/" {com++; fprintf(yyout," ");}
+\/\/.* {; com++; fprintf(yyout," ");}
+%%
+void main(int argc, char *argv[])
+{
+yyin=fopen(argv[1],"r");
+yyout=fopen(argv[2],"w");
+yylex();
+printf("\n number of comments are = %d\n",com);
+}
+int yywrap()
+{
+return 1;
+}
+
+//sample input file
+#include<stdio.h>
+int main()
+{
+int a,b,c;/*variable declaration*/
+printf("enter two num:");
+scanf("%d %d ,&a,&b);
+c=a+b;//adding two num
+printf("sum is:%d",c);
+return 0;
+}
