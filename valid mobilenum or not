@@ -1,0 +1,17 @@
+%{
+#include <stdio.h>
+%}
+%%
+[1-9][0-9]{9} {printf(" valid mobile number\n");}
+.+ {printf("\ninvalid mobile number");}
+%%
+int main()
+{
+printf("\n Enter mobile number:");	
+yylex();
+printf("\n");
+return 0;
+}
+
+int yywrap()
+{}
