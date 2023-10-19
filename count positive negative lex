@@ -1,0 +1,16 @@
+%{
+#include <stdio.h>
+int positive_num = 0,negative_num = 0;
+%}
+%%
+^[-][0-9]+ {negative_num++; printf("negative number= %s\n", yytext);}
+[0-9]+ {positive_num++; printf("positive number= %s\n", yytext);}
+%%
+int yywrap(){}
+int main()
+{
+//printf ("\n Enter the input string:");	
+yylex();
+printf ("\nnumber of positive numbers= %d," "number of negative numbers= %d\n", positive_num, negative_num);
+return 0;
+}
